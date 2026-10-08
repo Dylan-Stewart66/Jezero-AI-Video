@@ -1,0 +1,62 @@
+/* Jezero AI launch film. Sizes and positions come from src/js/00-config.js; this file only styles. */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:#000;color:#f3f6fc;overflow:hidden;cursor:none;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-synthesis:none;
+  font-family:"Geist",system-ui,sans-serif;font-kerning:normal;text-rendering:geometricPrecision}
+body.debug{cursor:default}
+
+/* Fixed 1920 x 1080 stage, letterboxed to fit any screen */
+#viewport{position:fixed;inset:0;background:#000}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;background:#05070d;overflow:hidden}
+#world,#text,#gridOverlay{position:absolute;left:0;top:0;width:1920px;height:1080px}
+#text,#gridOverlay{pointer-events:none}
+
+/* Type scale: the only four styles */
+.ts-display{font:600 120px/120px "Geist",sans-serif;letter-spacing:-0.03em}
+.ts-headline{font:600 80px/88px "Geist",sans-serif;letter-spacing:-0.025em}
+.ts-tagline{font:400 60px/72px "Geist",sans-serif;letter-spacing:-0.01em}
+.ts-supporting{font:400 40px/52px "Geist",sans-serif;letter-spacing:-0.005em}
+.ts-label{font:500 26px/32px "Geist Mono",monospace;letter-spacing:0}
+
+/* Text blocks: positioned by the layout system, lines revealed through a mask */
+.tb{position:absolute;margin:0;white-space:nowrap;display:none}
+.tb.on{display:block}
+.tb .ln{display:block;clip-path:inset(-40% -10% -30% -10%)}
+.tb .lt{display:inline-block;will-change:transform,opacity}
+.tb.center{text-align:center}
+
+/* Chrome */
+.mark{display:block;height:100%;width:auto}
+.chrome{position:absolute;will-change:opacity}
+.caci{display:block;height:100%;width:auto}
+
+/* Review overlay */
+#gridOverlay .col{position:absolute;top:0;bottom:0;width:118px;background:rgba(94,169,162,.10)}
+#gridOverlay .safe{position:absolute;left:120px;top:96px;width:1680px;height:888px;outline:2px dashed rgba(159,227,214,.7)}
+
+/* Debug controls (only with ?debug) */
+#debug{position:fixed;left:16px;right:16px;bottom:16px;z-index:10;display:flex;gap:12px;align-items:center;
+  padding:10px 14px;border-radius:10px;background:rgba(10,14,26,.9);border:1px solid rgba(255,255,255,.14);
+  font:500 14px/1.2 "Geist Mono",monospace;color:#9aa6bf}
+#debug[hidden]{display:none}
+#debug button{font:inherit;color:#f3f6fc;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:6px 12px;cursor:pointer;min-width:40px}
+#debug input{flex:1;accent-color:#9fe3d6}
+#dbTime{font-variant-numeric:tabular-nums;min-width:72px;color:#f3f6fc}
+#dbShot{min-width:300px}
+#dbFps{font-variant-numeric:tabular-nums;min-width:64px;text-align:right}
+
+/* Scene roots: only live scenes are laid out */
+#text .scene,#chrome{position:absolute;inset:0}
+#text .scene{display:none}
+#text .scene.live{display:block}
+
+/* Five-word tracker: label style, a 12px marker 12px left of each word, no box behind it */
+.tracker{position:absolute;display:none;white-space:nowrap}
+.trk{position:relative;color:#9aa6bf}
+.trk i{position:absolute;left:0;box-sizing:border-box;border:1.5px solid #f97362}
+.trk i b{position:absolute;inset:-1.5px;background:#7ef0c0;transform:scale(0)}
+
+/* Lockup: mark plus wordmark, at the reveal and on the end card only */
+.lockup{display:inline-flex !important;flex-direction:column;align-items:center;vertical-align:top}
+.lockup .wm{font-family:"Geist",sans-serif;font-weight:600;letter-spacing:-0.025em;color:#f3f6fc}

@@ -1,0 +1,7 @@
+node_modules/
+# The final MP4 is too big for GitHub (240 MB); render it with scripts/render.mjs
+*.mp4
+# Render and check output
+render-frames/
+review/
+.DS_Store

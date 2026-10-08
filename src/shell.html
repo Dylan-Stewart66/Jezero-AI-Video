@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jezero AI launch film</title>
+<style>
+/*@FONTS@*/
+/*@CSS@*/
+</style>
+<script type="importmap">{"imports":{"three":"@@THREE@@"}}</script>
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <!-- World layer: one Three.js scene. Never any text. -->
+    <canvas id="world"></canvas>
+    <!-- Text layer: every word, always flat, placed only through the layout system -->
+    <div id="text"></div>
+    <!-- Review overlay (?grid): 12 columns and the safe area -->
+    <div id="gridOverlay" hidden></div>
+  </div>
+</div>
+
+<template id="tpl-mark"><!--@MARK@--></template>
+<template id="tpl-full"><!--@FULL@--></template>
+<template id="tpl-caci"><img class="caci" src="@@CACI@@" alt="CACI"></template>
+<template id="tpl-aws"><img class="aws" src="@@AWS@@" alt="AWS Premier Tier Partner"></template>
+
+<div id="debug" hidden>
+  <button id="dbPlay" title="Play or pause (space)">Pause</button>
+  <button id="dbPrev" title="Previous shot (left arrow)">&#8249;</button>
+  <button id="dbNext" title="Next shot (right arrow)">&#8250;</button>
+  <input id="dbScrub" type="range" min="0" step="0.01" aria-label="Time">
+  <span id="dbTime"></span>
+  <span id="dbShot"></span>
+  <span id="dbFps"></span>
+</div>
+
+<script>/*@QR@*/</script>
+<script type="module">
+import * as THREE from 'three';
+/*@JS@*/
+</script>
+</body>
+</html>
